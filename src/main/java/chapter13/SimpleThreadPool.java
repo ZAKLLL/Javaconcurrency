@@ -2,6 +2,8 @@ package chapter13;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * @program: javaconcurrency
@@ -16,7 +18,7 @@ public class SimpleThreadPool {
 
     private static volatile int seq = 0;
 
-    private static String THREAD_PREFIX = "SIMPLE_THREAD_POOL";
+    private final static String THREAD_PREFIX = "SIMPLE_THREAD_POOL";
 
     private final static LinkedList<Runnable> TASK_QUEUE = new LinkedList<>();
 
@@ -44,7 +46,6 @@ public class SimpleThreadPool {
         for (int i = 0; i < size; i++) {
             createworktask();
         }
-
     }
 
     private void createworktask() {
@@ -58,7 +59,7 @@ public class SimpleThreadPool {
     }
 
     private static class WorkerTask extends Thread {
-        private volatile TaskState taskState = TaskState.FREE;
+        private volatile TaskState taskState = TaskState.FREE; //线程池中的工作线程的状态，默认为FREE，可进行工作的状态
 
         private WorkerTask(ThreadGroup group, String name) {
             super(group, name);
@@ -78,13 +79,12 @@ public class SimpleThreadPool {
                         try {
                             taskState = TaskState.BLOCKED;
                             TASK_QUEUE.wait();
-
                         } catch (InterruptedException e) {
                             break OUTER;
                         }
                     }
+                    runnable = TASK_QUEUE.removeFirst(); //取出任务队列的第一个线程任务
                 }
-                runnable = TASK_QUEUE.removeFirst();
                 if (runnable != null) {
                     taskState = TaskState.RUNNING;
                     runnable.run();
@@ -92,5 +92,28 @@ public class SimpleThreadPool {
                 }
             }
         }
+
+        private void close() {
+            this.taskState = TaskState.DEAD;
+        }
     }
+
+    public static void main(String[] args) {
+        SimpleThreadPool simpleThreadPool = new SimpleThreadPool();
+        IntStream.rangeClosed(0, 40).forEach(
+                i -> simpleThreadPool.submit(() -> {
+                    System.out.println("The Runnable " + i + "Serviced by" + Thread.currentThread() + "start");
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("The Runnable " + i + "Serviced by" + Thread.currentThread() + "stop");
+                })
+        );
+        
+    }
+
+
+
 }
