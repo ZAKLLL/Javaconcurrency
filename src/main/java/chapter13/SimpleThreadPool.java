@@ -2,7 +2,6 @@ package chapter13;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.IntStream;
 
 /**
@@ -11,6 +10,7 @@ import java.util.stream.IntStream;
  * @author: ZakL
  * @create: 2019-05-13 10:48
  **/
+//todo 添加拒绝策略
 public class SimpleThreadPool {
     private final int size;
 
@@ -102,7 +102,7 @@ public class SimpleThreadPool {
         SimpleThreadPool simpleThreadPool = new SimpleThreadPool();
         IntStream.rangeClosed(0, 40).forEach(
                 i -> simpleThreadPool.submit(() -> {
-                    System.out.println("The Runnable " + i + "Serviced by" + Thread.currentThread() + "start");
+                    System.out.println("The Runnable " + i + " Serviced by" + Thread.currentThread() + "start");
                     try {
                         Thread.sleep(10000);
                     } catch (InterruptedException e) {
@@ -111,9 +111,5 @@ public class SimpleThreadPool {
                     System.out.println("The Runnable " + i + "Serviced by" + Thread.currentThread() + "stop");
                 })
         );
-        
     }
-
-
-
 }
