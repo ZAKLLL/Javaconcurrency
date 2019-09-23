@@ -1,4 +1,4 @@
-package concurrency1;
+package chapter1_Singleton;
 
 /**
  * @program: javaconcurrency

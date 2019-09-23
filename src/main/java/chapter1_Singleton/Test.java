@@ -1,4 +1,4 @@
-package concurrency1;
+package chapter1_Singleton;
 
 /**
  * @program: javaconcurrency
@@ -17,7 +17,7 @@ public class Test  {
 
 }
 
-class B implements Runnable {
+class  B implements Runnable {
     public void run() {
 
     }

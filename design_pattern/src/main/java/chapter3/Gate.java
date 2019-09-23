@@ -13,14 +13,14 @@ public class Gate {
     private String address;
 
 
-      void pass(String name, String address) {
+     synchronized void pass(String name, String address) {
         count++;
         this.name = name;
         this.address = address;
         verify();
     }
 
-    private void verify() {
+    private void  verify() {
         if (name.charAt(0) != address.charAt(0)) {
             System.out.println("broken----------->" + toString());
         }

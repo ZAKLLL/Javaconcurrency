@@ -1,9 +1,6 @@
-package concurrency3;
+package chapter3;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @program: javaconcurrency

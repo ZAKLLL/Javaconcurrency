@@ -8,11 +8,11 @@ package chapter8;
  **/
 public class OtherService {
 
-    private Object obj = new Object();
+    private final Object obj = new Object();
 
     private DeadLock deadLock;
 
-    public void setDeadLock(DeadLock deadLock) {
+    void setDeadLock(DeadLock deadLock) {
         this.deadLock = deadLock;
     }
 

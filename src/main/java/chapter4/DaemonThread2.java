@@ -11,19 +11,17 @@ public class DaemonThread2 {
         Thread t = new Thread("T") {
             @Override
             public void run() {
-               Thread innerThread= new Thread(new Runnable() {
-                    public void run() {
-                        int count=0;
-                        while (true) {
-                            System.out.println(Thread.currentThread().getName()+"is Running"+count+++"times");
-                            try {
-                                Thread.sleep(2000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                },"innerThread");
+               Thread innerThread= new Thread(() -> {
+                   int count=0;
+                   while (true) {
+                       System.out.println(Thread.currentThread().getName()+"is Running"+count+++"times");
+                       try {
+                           Thread.sleep(2000);
+                       } catch (InterruptedException e) {
+                           e.printStackTrace();
+                       }
+                   }
+               },"innerThread");
                //将InnerThread设置为守护线程
                 innerThread.setDaemon(true);
                 innerThread.start();

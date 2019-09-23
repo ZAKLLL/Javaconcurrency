@@ -22,6 +22,8 @@
     </build>
     <modules>
         <module>design_pattern</module>
+        <module>classLoader</module>
+        <module>THIRD</module>
     </modules>
 
     <dependencies>
@@ -42,6 +44,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>4.5.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->

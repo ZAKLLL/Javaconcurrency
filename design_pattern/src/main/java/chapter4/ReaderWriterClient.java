@@ -15,6 +15,5 @@ public class ReaderWriterClient {
         new ReaderThread(shareDate).start();
         new ReaderThread(shareDate).start();
         new WriterThread(shareDate, "sdadasd").start();
-        
     }
 }

@@ -12,22 +12,16 @@ public class DeadLockTest {
         DeadLock deadLock = new DeadLock(otherService);
         otherService.setDeadLock(deadLock);
 
-        new Thread() {
-            @Override
-            public void run() {
-                while (true) {
-                    deadLock.m1();
-                }
+        new Thread(() -> {
+            while (true) {
+                deadLock.m1();
             }
-        }.start();
-        new Thread() {
-            @Override
-            public void run() {
-                while (true) {
-                    otherService.s2();
-                }
+        }).start();
+        new Thread(() -> {
+            while (true) {
+                otherService.s2();
             }
-        }.start();
+        }).start();
 
     }
 }

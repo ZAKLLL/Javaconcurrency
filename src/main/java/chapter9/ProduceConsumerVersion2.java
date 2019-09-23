@@ -1,7 +1,5 @@
 package chapter9;
 
-import sun.awt.windows.ThemeReader;
-
 /**
  * @program: javaconcurrency
  * @description:
@@ -55,14 +53,14 @@ public class ProduceConsumerVersion2 {
                 }
             }
         }.start();
-        new Thread("P2") {
-            @Override
-            public void run() {
-                while (true) {
-                    pc.produce();
-                }
-            }
-        }.start();
+//        new Thread("P2") {
+//            @Override
+//            public void run() {
+//                while (true) {
+//                    pc.produce();
+//                }
+//            }
+//        }.start();
         new Thread("C") {
             @Override
             public void run() {
@@ -71,14 +69,14 @@ public class ProduceConsumerVersion2 {
                 }
             }
         }.start();
-        new Thread("C2") {
-            @Override
-            public void run() {
-                while (true) {
-                    pc.consume();
-                }
-            }
-        }.start();
+//        new Thread("C2") {
+//            @Override
+//            public void run() {
+//                while (true) {
+//                    pc.consume();
+//                }
+//            }
+//        }.start();
 
     }
 }
