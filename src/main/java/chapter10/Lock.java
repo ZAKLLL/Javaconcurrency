@@ -10,7 +10,7 @@ import java.util.Collections;
  * @create: 2019-05-12 10:55
  **/
 public interface Lock {
-    static class TimeOutException extends Exception {
+    class TimeOutException extends Exception {
         public TimeOutException(String str) {
             super(str);
         }

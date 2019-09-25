@@ -2,6 +2,7 @@ package atomic;
 
 import cn.hutool.core.collection.ConcurrentHashSet;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
@@ -30,16 +31,6 @@ public class AtomicInterTest {
     private static Set<Integer> set = new ConcurrentHashSet<>();
 
     public static void main(String[] args) throws InterruptedException {
-//        Thread t1 = new Thread(() -> {
-//            int x = 0;
-//            while (x < 500) {
-//                int andIncrement = val.getAndIncrement();
-//                set.add(andIncrement);
-//                System.out.println(Thread.currentThread().getName() + ":" + andIncrement);
-//                x++;
-//            }
-//        });
-
         CountDownLatch countDownLatch = new CountDownLatch(3);
 
         IntStream.rangeClosed(0, 2).forEach(
@@ -50,6 +41,7 @@ public class AtomicInterTest {
                         set.add(andIncrement);
                         System.out.println(Thread.currentThread().getName() + ":" + andIncrement);
                         x++;
+                        val.getAndAdd(2);
                     }
                     countDownLatch.countDown();
                 }).start()
