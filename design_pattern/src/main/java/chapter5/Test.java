@@ -16,8 +16,8 @@ public class Test {
 
         System.out.println("------------");
         System.out.println("do other thing");
-        Thread.sleep(10000);
+//        Thread.sleep(10000);
         System.out.println("------------");
-        System.out.println(future.get());
+        System.out.println("future.get()"+future.get());
     }
 }

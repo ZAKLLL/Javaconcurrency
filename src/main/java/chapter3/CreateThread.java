@@ -13,7 +13,7 @@ public class CreateThread {
     private static int counter = 0;
 
     //由jvm创建的main线程
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         Thread t = new Thread(null, new Runnable() {
             public void run() {
                 try {
@@ -22,11 +22,12 @@ public class CreateThread {
                     System.out.println("自定义栈大小" + counter);
                 }
             }
+
             private void add(int i) {
                 counter++;
                 add(i + 1);
             }
-        }, "TestStack",1<<24);
+        }, "TestStack", 1 << 24);
         t.start();
     }
 }

@@ -10,9 +10,9 @@ import java.util.function.Consumer;
  * @create: 2019-08-04 10:01
  **/
 class FutureService {
-    <T> Future<T> submit(final FutureTask<T> task, Consumer<T> consumer){
+    <T> Future<T> submit(final FutureTask<T> task, Consumer<T> consumer) {
         AsynFuture<T> asynFuture = new AsynFuture<>();
-        new Thread(()-> {
+        new Thread(() -> {
             try {
                 T result = task.call();
                 asynFuture.done(result);
