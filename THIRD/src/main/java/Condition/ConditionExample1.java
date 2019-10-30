@@ -1,7 +1,5 @@
 package Condition;
 
-import java.sql.Time;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,6 +17,7 @@ public class ConditionExample1 {
     private final static Condition condition = lock.newCondition();
     private static int date = 0;
     private static volatile boolean noUse = true;
+
 
     //生产者,在被消费之前不会继续生产
     private static void buildDate() {
@@ -55,17 +54,5 @@ public class ConditionExample1 {
         }
     }
 
-    public static void main(String[] args) {
-        IntStream.range(0, 5).forEach(i -> new Thread(() -> {
-            while (true) {
-                buildDate();
-            }
-        }, "生产线程" + i).start());
-        IntStream.range(0, 5).forEach(i -> new Thread(() -> {
-            while (true) {
-                useDate();
-            }
-        }, "消费线程" + i).start());
 
-    }
 }

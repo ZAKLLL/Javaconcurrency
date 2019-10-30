@@ -13,7 +13,6 @@ public class ExchaneExample {
         final Exchanger<String> exchanger = new Exchanger<>();
         new Thread(new Runnable() {
             String a = "Thread-A";
-
             @Override
             public void run() {
                 try {

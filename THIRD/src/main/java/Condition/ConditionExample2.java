@@ -49,7 +49,7 @@ public class ConditionExample2 {
                 CONSUME_COND.await();
             }
             TimeUnit.SECONDS.sleep(1);
-            System.out.println(Thread.currentThread().getName()+"Consume:"+TIMESTAMP_POOL.pop());
+            System.out.println(Thread.currentThread().getName() + "Consume:" + TIMESTAMP_POOL.pop());
             PRODUCE_COND.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -59,8 +59,9 @@ public class ConditionExample2 {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
-        IntStream.range(0, 7 ).forEach(i-> new Thread(() -> {
+
+    public static void main(String[] args) {
+        IntStream.range(0, 7).forEach(i -> new Thread(() -> {
             while (true) {
                 pruoduce();
                 try {
@@ -69,8 +70,8 @@ public class ConditionExample2 {
                     e.printStackTrace();
                 }
             }
-        },"PRODUCE_THREAD"+i).start());
-        IntStream.range(0, 5).forEach(i-> new Thread(() -> {
+        }, "PRODUCE_THREAD" + i).start());
+        IntStream.range(0, 5).forEach(i -> new Thread(() -> {
             while (true) {
                 consume();
                 try {
@@ -80,7 +81,7 @@ public class ConditionExample2 {
                 }
 
             }
-        },"CONSUME_THREAD"+i).start());
+        }, "CONSUME_THREAD" + i).start());
 
     }
 }
