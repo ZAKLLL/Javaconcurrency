@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 /**
  * @program: javaconcurrency
- * @description:
+ * @description: 使用Phaser实现Countdownlatch的功能
  * @author: ZakL
  * @create: 2019-10-30 10:12
  **/
@@ -20,7 +20,7 @@ public class PhaserExample1 {
 
         Task(Phaser phaser) {
             this.phaser = phaser;
-            this.phaser.register();
+            this.phaser.register(); //将该party进行注册,表明该线程是要参与相互等待的
             start();
         }
 
@@ -33,7 +33,7 @@ public class PhaserExample1 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            phaser.arriveAndAwaitAdvance();
+            phaser.arriveAndAwaitAdvance(); //等待所有被注册的party到达，blocking
         }
     }
 
@@ -43,8 +43,6 @@ public class PhaserExample1 {
         phaser.register();
         phaser.arriveAndAwaitAdvance();
         System.out.println("All of worker finished well");
-
-
     }
 }
 

@@ -1,4 +1,4 @@
-package ForkJoin;
+package forkjoin;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 /**
  * @program: javaconcurrency
- * @description:
+ * @description: 分而治之
  * @author: ZakL
  * @create: 2019-10-30 09:16
  **/

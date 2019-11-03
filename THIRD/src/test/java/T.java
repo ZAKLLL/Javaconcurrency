@@ -5,10 +5,14 @@
  * @create: 2019-09-26 17:34
  **/
 public class T {
-
-    public static void main(String[] args) throws InterruptedException {
-        new Thread(() -> System.out.println(Thread.currentThread().getName()),"Custom Thread").start();
-        Thread.sleep(1000L);
-        System.out.println(Thread.currentThread().getName());
+    public void test() {
+        int a = 8;
+        while ((a-=3)>0);
+        System.out.println("a->:"+a);
+    }
+    public static void main(String[] args) {
+        for (int i = 0; i < 50_0000; i++) {
+            new T().test();
+        }
     }
 }

@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="classLoader" />
         <module name="design_pattern" />
         <module name="THIRD" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="classLoader" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
