@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * @program: javaconcurrency
  * @description:
@@ -5,14 +9,33 @@
  * @create: 2019-09-26 17:34
  **/
 public class T {
-    public void test() {
-        int a = 8;
-        while ((a-=3)>0);
-        System.out.println("a->:"+a);
-    }
+
     public static void main(String[] args) {
-        for (int i = 0; i < 50_0000; i++) {
-            new T().test();
-        }
+        plate<? extends Fruit> plate = new plate();
     }
+
+    static class plate<T> {
+        List<T> a = new ArrayList<>();
+
+        public void add(T t) {
+            a.add(t);
+        }
+
+        public T get() {
+            return a.get(0);
+        }
+
+    }
+
+    static class Fruit {
+
+    }
+
+    static class Apple extends Fruit {
+
+
+    }
+
 }
+
+
