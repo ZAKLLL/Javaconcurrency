@@ -1,5 +1,8 @@
 package Executor;
 
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -17,9 +20,8 @@ public class CompletableFutureExample2 {
 //        acceptEither();
 //        runAfterBoth();
 //        thenCombine();
-        thenCompose();
-        Thread.currentThread().join();
-
+//        thenCompose();
+//        Thread.currentThread().join();
     }
 
     //thenCompose（）用来连接两个CompletableFuture，是生成一个新的CompletableFuture,并且前一个Future.get()会成为thenCompose的参数/注意与thenApply的区分
@@ -131,3 +133,4 @@ public class CompletableFutureExample2 {
                 (h, w) -> System.out.println(h + "-----" + w));
     }
 }
+
